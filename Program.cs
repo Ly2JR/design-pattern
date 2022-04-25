@@ -1,25 +1,24 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using Design_Pattern;
-
 Console.WriteLine("23种设计模式:");
 
-#region 单件模式(Singleton Pattern):
+#region 1. 单件模式(Singleton Pattern):
 
 //Console.WriteLine("单件模式(Singleton Pattern):");
+
 //var s1 = SingletonPattern.Instance();
 //var s2 = SingletonPattern.Instance();
 //if (s1.Equals(s2))
 //{
 //    Console.WriteLine("see,only one instance.");
 //}
-//Console.ReadKey();
 
 #endregion
 
-#region 抽象工厂(Abstract Factory):
+#region 2. 抽象工厂(Abstract Factory):
 
 //Console.WriteLine("抽象工厂(Abstract Factory):");
+
 //var winFactory = new AbstractFactory.WinFactory();
 //var maxFactory = new AbstractFactory.MacFactory();
 //var iButton=winFactory.CreateButton();
@@ -32,24 +31,24 @@ Console.WriteLine("23种设计模式:");
 //iBorder = maxFactory.CreateBorder();
 //iBorder.Display();
 
-//Console.ReadKey();
 #endregion
 
-#region 建造者模式(Builder):
+#region 3. 建造者模式(Builder):
 
 //Console.WriteLine("建造者模式(Builder):");
+
 //var pd = new Builder.PersonDirector();
 //var person = pd.ConstructPerson(new Builder.ManBuilder());
 //Console.WriteLine(person.Body);
 //Console.WriteLine(person.Foot);
 //Console.WriteLine(person.Head);
-//Console.ReadKey();
 
 #endregion
 
-#region 工厂方法模式(Factory Method):
+#region 4. 工厂方法模式(Factory Method):
 
 //Console.WriteLine("工厂方法模式(Factory Method):");
+
 //var shreddedPorkWithPotatoesFactory = new FactoryMethod.ShreddedPorkWithPotatoesFactory();
 //var tomatoScrambledEggsFactory = new FactoryMethod.TomatoScrambledEggsFactory();
 
@@ -58,11 +57,10 @@ Console.WriteLine("23种设计模式:");
 
 //var shreddedPorkWithPotatoes = shreddedPorkWithPotatoesFactory.CreateFoodFactory();
 //shreddedPorkWithPotatoes.Print();
-//Console.ReadKey();
 
 #endregion
 
-#region 原型模式(Prototype):
+#region 5. 原型模式(Prototype):
 
 //Console.WriteLine("原型模式(Prototype):");
 
@@ -82,7 +80,6 @@ Console.WriteLine("23种设计模式:");
 //}
 
 //Console.WriteLine($"RedColor - Red {redColor.Red}");
-//Console.ReadKey();
 
 #endregion
 
@@ -106,16 +103,14 @@ Console.WriteLine("23种设计模式:");
 //    }
 //}
 
-//Console.ReadKey();
+#endregion
 
 #endregion
 
-
-#endregion
-
-#region 适配器模式(Adapter Pattern):
+#region 6. 适配器模式(Adapter Pattern):
 
 //Console.WriteLine(" 适配器模式(Adapter Pattern):");
+
 //var adapterClass = new AdapterPattern.AdapterClass();
 //adapterClass.Request();
 //Console.WriteLine();
@@ -124,11 +119,12 @@ Console.WriteLine("23种设计模式:");
 
 //var defaultAdapter = new AdapterPattern.MyInteresting();
 //defaultAdapter.F3();
-//Console.ReadKey();
 
 #endregion
 
-#region 桥接模式(Bridge Pattern):
+#region 7. 桥接模式(Bridge Pattern):
+
+//Console.WriteLine("桥接模式(Bridge Pattern):");
 
 //var shapes = new BridgePattern.IShape[2];
 //shapes[0] = new BridgePattern.CircleShape(1, 2, 3, new BridgePattern.DrawingApi1());
@@ -138,35 +134,33 @@ Console.WriteLine("23种设计模式:");
 //    shape.ResizeByPercentage(2.5);
 //    shape.Draw();
 //}
-//Console.ReadKey();
 
 #endregion
 
-#region 装饰模式(Decorator Pattern):
+#region 8. 装饰模式(Decorator Pattern):
 
 //Console.WriteLine("装饰模式(Decorator Pattern):");
+
 //var thirdPartyOne = new DecoratorPattern.ThirdParty();
 //var decorator1 = new DecoratorPattern.Decorator1(thirdPartyOne);
 //var decorator2 = new DecoratorPattern.Decorator2(decorator1);
 //Console.WriteLine(decorator2.SayMsg());
-//Console.ReadKey();
 
 #endregion
 
-#region  外观模式(Facade Pattern)：
+#region  9. 外观模式(Facade Pattern)：
 
 //Console.WriteLine("外观模式(Facade Pattern)：");
+
 //FacadePattern.Facade facade = new FacadePattern.Facade();
 //facade.MethodA();
 //facade.MethodB();
-//// Wait for user  
-//Console.ReadKey();
 
 #endregion
 
-#region 享元模式(Flyweight Pattern):
+#region 10. 享元模式(Flyweight Pattern):
 
-Console.WriteLine("享元模式(Flyweight Pattern):");
+//Console.WriteLine("享元模式(Flyweight Pattern):");
 
 #region 示例一
 ////Arbitrary extrinsic state
@@ -185,34 +179,80 @@ Console.WriteLine("享元模式(Flyweight Pattern):");
 
 //var fu = new FlyweightPattern.UnsharedConcreteFlyweight();
 //fu.Operation(--extrinsicstate);
-
-//Console.ReadKey();
 #endregion
 
 #region 示例二
 
-string document = "AAZZBBZB";
-var chars = document.ToCharArray();
+//string document = "AAZZBBZB";
+//var chars = document.ToCharArray();
 
-var factory = new FlyweightPattern.CharacterFactory();
+//var factory = new FlyweightPattern.CharacterFactory();
 
-//extrinsic state
-int pointSize = 10;
+////extrinsic state
+//int pointSize = 10;
 
-//for each character use a flyweight object
-foreach (var c in chars)
-{
-    pointSize++;
-    var character = factory.GetCharacter(c);
-    character.Display(pointSize);
-}
-
-Console.ReadKey();
+////for each character use a flyweight object
+//foreach (var c in chars)
+//{
+//    pointSize++;
+//    var character = factory.GetCharacter(c);
+//    character.Display(pointSize);
+//}
 
 #endregion
+#endregion
+
+#region 11. 代理模式(Proxy Pattern):
+
+//Console.WriteLine("代理模式(Proxy Pattern):");
+
+#region 示例一
+
+//var proxy = new ProxyPattern.Proxy() ;
+//proxy.Request();
+
+#endregion
+
+#region 示例二
+
+//var proxy = new ProxyPattern.MathProxy();
+//Console.WriteLine($"4 + 2 = {proxy.Add(4, 2)}");
+//Console.WriteLine($"4 - 2 = {proxy.Sub(4, 2)}");
+//Console.WriteLine($"4 * 2 = {proxy.Mul(4, 2)}");
+//Console.WriteLine($"4 / 2 = {proxy.Div(4, 2)}");
+
+#endregion
+
+#endregion
+
+#region 12. 模板方法(Template Method):
+
+//Console.WriteLine("模板方法(Template Method):");
+
+#region 示例一
+
+//var aA = new TemplateMethod.ConcreteClassA();
+//aA.TemplateMethod();
+
+//var aB = new TemplateMethod.ConcreteClassB();
+//aB.TemplateMethod();
+
+#endregion
+
+#region 示例二
+
+//var categories = new TemplateMethod.Categories();
+//categories.Run(5);
+
+//var products=new TemplateMethod.Products();
+//products.Run(3);
+
+#endregion
+
 #endregion
 
 #region  组合模式(Composite Pattern):
+
 //Console.WriteLine("组合模式(Composite Pattern):");
 
 //CompositePattern.Company root = new CompositePattern.ConcreteCompany();
@@ -254,6 +294,7 @@ Console.ReadKey();
 //root.Add(huadongCompany);
 //root.Display(0);
 
-//Console.ReadKey();
-
 #endregion
+
+Console.WriteLine("按任意键结束...");
+Console.ReadKey();
