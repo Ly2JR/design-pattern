@@ -64,7 +64,7 @@ Console.WriteLine("23种设计模式:");
 
 #region 原型模式(Prototype):
 
-Console.WriteLine("原型模式(Prototype):");
+//Console.WriteLine("原型模式(Prototype):");
 
 #region 浅复制
 
@@ -88,22 +88,128 @@ Console.WriteLine("原型模式(Prototype):");
 
 #region 深复复制
 
-var redColor = new Prototype.RedColor
-{
-    Red = 255,
-    F = new Prototype.Factory() { Name = "RedColor" }
-};
-Console.WriteLine($"RedColor - Factory:{redColor.F.Name}; Red - {redColor.Red}");
+//var redColor = new Prototype.RedColor
+//{
+//    Red = 255,
+//    F = new Prototype.Factory() { Name = "RedColor" }
+//};
+//Console.WriteLine($"RedColor - Factory:{redColor.F.Name}; Red - {redColor.Red}");
 
-var redColorClone = redColor.Clone();
-redColorClone.Red = 234;
-redColorClone.F.Name = "RedColorClone";
-Console.WriteLine($"RedColorClone - Factory {redColorClone.F.Name}; Red - {redColorClone.Red}");
-Console.ReadKey();
+//var redColorClone = redColor.Clone();
+//if (redColorClone != null)
+//{
+//    redColorClone.Red = 234;
+//    if (redColorClone.F != null)
+//    {
+//        redColorClone.F.Name = "RedColorClone";
+//        Console.WriteLine($"RedColorClone - Factory {redColorClone.F.Name}; Red - {redColorClone.Red}");
+//    }
+//}
+
+//Console.ReadKey();
 
 #endregion
 
 
+#endregion
+
+#region 适配器模式(Adapter Pattern):
+
+//Console.WriteLine(" 适配器模式(Adapter Pattern):");
+//var adapterClass = new AdapterPattern.AdapterClass();
+//adapterClass.Request();
+//Console.WriteLine();
+//var adapterInterface = new AdapterPattern.AdapterInterface();    
+//adapterInterface.Request();
+
+//var defaultAdapter = new AdapterPattern.MyInteresting();
+//defaultAdapter.F3();
+//Console.ReadKey();
+
+#endregion
+
+#region 桥接模式(Bridge Pattern):
+
+//var shapes = new BridgePattern.IShape[2];
+//shapes[0] = new BridgePattern.CircleShape(1, 2, 3, new BridgePattern.DrawingApi1());
+//shapes[1] = new BridgePattern.CircleShape(5, 7, 11, new BridgePattern.DrawingApi2());
+//foreach (var shape in shapes)
+//{
+//    shape.ResizeByPercentage(2.5);
+//    shape.Draw();
+//}
+//Console.ReadKey();
+
+#endregion
+
+#region 装饰模式(Decorator Pattern):
+
+//Console.WriteLine("装饰模式(Decorator Pattern):");
+//var thirdPartyOne = new DecoratorPattern.ThirdParty();
+//var decorator1 = new DecoratorPattern.Decorator1(thirdPartyOne);
+//var decorator2 = new DecoratorPattern.Decorator2(decorator1);
+//Console.WriteLine(decorator2.SayMsg());
+//Console.ReadKey();
+
+#endregion
+
+#region  外观模式(Facade Pattern)：
+
+//Console.WriteLine("外观模式(Facade Pattern)：");
+//FacadePattern.Facade facade = new FacadePattern.Facade();
+//facade.MethodA();
+//facade.MethodB();
+//// Wait for user  
+//Console.ReadKey();
+
+#endregion
+
+#region 享元模式(Flyweight Pattern):
+
+Console.WriteLine("享元模式(Flyweight Pattern):");
+
+#region 示例一
+////Arbitrary extrinsic state
+//int extrinsicstate = 22;
+//var factory = new FlyweightPattern.FlyweightFactory();
+////Work with different flyweight instances
+
+//var fx = factory.GetFlyweight("X");
+//fx.Operation(--extrinsicstate);
+
+//var fy = factory.GetFlyweight("Y");
+//fy.Operation(--extrinsicstate);
+
+//var fz= factory.GetFlyweight("Z");
+//fz.Operation(--extrinsicstate);
+
+//var fu = new FlyweightPattern.UnsharedConcreteFlyweight();
+//fu.Operation(--extrinsicstate);
+
+//Console.ReadKey();
+#endregion
+
+#region 示例二
+
+string document = "AAZZBBZB";
+var chars = document.ToCharArray();
+
+var factory = new FlyweightPattern.CharacterFactory();
+
+//extrinsic state
+int pointSize = 10;
+
+//for each character use a flyweight object
+foreach (var c in chars)
+{
+    pointSize++;
+    var character = factory.GetCharacter(c);
+    character.Display(pointSize);
+}
+
+Console.ReadKey();
+
+#endregion
 #endregion
 
 #region  组合模式(Composite Pattern):
