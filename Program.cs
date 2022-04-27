@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using Design_Pattern;
+using static Design_Pattern.InterpreterPattern;
 
 Console.WriteLine("23种设计模式:");
 
@@ -351,14 +352,36 @@ Console.WriteLine("23种设计模式:");
 
 #region Real-world code
 
-var ibm = new ObserverPattern.IBM("IBM", 120.00);
-ibm.Attach(new ObserverPattern.Investor("Sorros"));
-ibm.Attach(new ObserverPattern.Investor("Berkshire"));
+//var ibm = new ObserverPattern.IBM("IBM", 120.00);
+//ibm.Attach(new ObserverPattern.Investor("Sorros"));
+//ibm.Attach(new ObserverPattern.Investor("Berkshire"));
 
-ibm.Price = 120.10;
-ibm.Price = 121.00;
-ibm.Price = 120.50;
-ibm.Price = 120.75;
+//ibm.Price = 120.10;
+//ibm.Price = 121.00;
+//ibm.Price = 120.50;
+//ibm.Price = 120.75;
+
+#endregion
+
+#endregion
+
+#region 16. 解释器模式(Interpreter Pattern):
+
+#region Structural code
+
+var context = new InterpreterPattern.Context();
+
+var list = new List<AbstractExpression>();
+
+list.Add(new TerminalExpression());
+list.Add(new NonterminalExpression());
+list.Add(new TerminalExpression());
+list.Add(new TerminalExpression());
+
+foreach (var expression in list)
+{
+    expression.Interpret(context);
+}
 
 #endregion
 

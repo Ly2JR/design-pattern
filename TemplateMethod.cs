@@ -74,7 +74,7 @@
 
             public override void Disconnect()
             {
-                _categories.Clear();
+                _categories?.Clear();
             }
 
             public override void Process(int top)
@@ -89,13 +89,16 @@
 
             public override void Select()
             {
-                _categories.Add("Red");
-                _categories.Add("Green");
-                _categories.Add("Blue");
-                _categories.Add("Yellow");
-                _categories.Add("Purple");
-                _categories.Add("White");
-                _categories.Add("Black");
+                if (_categories != null)
+                {
+                    _categories.Add("Red");
+                    _categories.Add("Green");
+                    _categories.Add("Blue");
+                    _categories.Add("Yellow");
+                    _categories.Add("Purple");
+                    _categories.Add("White");
+                    _categories.Add("Black");
+                }
             }
         }
 
@@ -110,7 +113,7 @@
 
             public override void Disconnect()
             {
-                _products.Clear();
+                _products?.Clear();
             }
 
             public override void Process(int top)
@@ -118,20 +121,23 @@
                 Console.WriteLine("Products --- ");
                 for (var i = 0; i < top; i++)
                 {
-                    Console.WriteLine(_products[i]);
+                    Console.WriteLine(_products?[i]);
                 }
                 Console.WriteLine();
             }
 
             public override void Select()
             {
-                _products.Add("Car");
-                _products.Add("Bike");
-                _products.Add("Boat");
-                _products.Add("Truck");
-                _products.Add("Moped");
-                _products.Add("Rollerskate");
-                _products.Add("Stroller");
+                if (_products != null)
+                {
+                    _products.Add("Car");
+                    _products.Add("Bike");
+                    _products.Add("Boat");
+                    _products.Add("Truck");
+                    _products.Add("Moped");
+                    _products.Add("Rollerskate");
+                    _products.Add("Stroller");
+                }
             }
         }
         #endregion
