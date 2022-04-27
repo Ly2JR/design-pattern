@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using Design_Pattern;
+
 Console.WriteLine("23种设计模式:");
 
 #region 1. 单件模式(Singleton Pattern):
@@ -246,6 +248,117 @@ Console.WriteLine("23种设计模式:");
 
 //var products=new TemplateMethod.Products();
 //products.Run(3);
+
+#endregion
+
+#endregion
+
+#region 13. 命令模式(Command Pattern):
+
+//Console.WriteLine("命令模式(Command Pattern):");
+
+#region 示例一
+
+//var receiver = new CommandPattern.Receiver();
+//var command = new CommandPattern.ConcreteCommand(receiver);
+//var invoker = new CommandPattern.Invoker();
+//invoker.SetCommand(command);
+//invoker.ExecuteCommand();
+
+#endregion
+
+#region 示例二
+
+//var user = new CommandPattern.User();
+//user.Compute('+',100);
+//user.Compute('-',50);
+//user.Compute('*',10);
+//user.Compute('/',2);
+
+//user.Undo(4);
+//user.Redo(3);
+
+#endregion
+
+#endregion
+
+#region 14. 迭代器模式(Iterator Pattern)
+
+#region Structural Code
+
+//var aggregate = new IteratorPattern.ConcreteAggregate
+//{
+//    [0] = "Item A",
+//    [1] = "Item B",
+//    [2] = "Item C",
+//    [3] = "Item D"
+//};
+
+//var iterator = aggregate.CreateIterator();
+//Console.WriteLine("Iterating over collection:");
+
+//object? item = iterator.First();
+//while (item != null)
+//{
+//    Console.WriteLine(item);
+//    item = iterator.Next();
+//}
+
+#endregion
+
+#region Real-word Code
+
+//var collection = new IteratorPattern.Collection
+//{
+//    [0] = new("Item 0"),
+//    [1] = new("Item 1"),
+//    [2] = new("Item 2"),
+//    [3] = new("Item 3"),
+//    [4] = new("Item 4"),
+//    [5] = new("Item 5"),
+//    [6] = new("Item 6"),
+//    [7] = new("Item 7"),
+//    [8] = new("Item 8"),
+//};
+
+//var iterator = collection.CreateIterator();
+//iterator.Step = 2;
+
+//Console.WriteLine("Iterating over collection:");
+
+//for (var item=iterator.First();!iterator.IsDone;item=iterator.Next())
+//{
+//    if (item != null) Console.WriteLine(item.Name);
+//}
+#endregion
+
+
+#endregion
+
+#region 15. 观察者模式(Observer Pattern)
+
+#region Structrual code
+
+//var s = new ObserverPattern.ConcreteSubject();
+//s.Attach(new ObserverPattern.ConcreteObserver(s,"x"));
+//s.Attach(new ObserverPattern.ConcreteObserver(s, "y"));
+//s.Attach(new ObserverPattern.ConcreteObserver(s, "z"));
+
+//s.SubjectState = "ABC";
+//s.Notify();
+
+#endregion
+
+#region Real-world code
+
+var ibm = new ObserverPattern.IBM("IBM", 120.00);
+ibm.Attach(new ObserverPattern.Investor("Sorros"));
+ibm.Attach(new ObserverPattern.Investor("Berkshire"));
+
+ibm.Price = 120.10;
+ibm.Price = 121.00;
+ibm.Price = 120.50;
+ibm.Price = 120.75;
 
 #endregion
 
