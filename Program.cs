@@ -1,9 +1,14 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using Design_Pattern;
-using static Design_Pattern.InterpreterPattern;
+using System.Data;
+using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using Mediator= Design_Pattern.Mediator;
+using Interpreter= Design_Pattern.Interpreter;
+using Chain=Design_Pattern.Chain;
+using Memento=Design_Pattern.Memento;
 
-Console.WriteLine("23种设计模式:");
 
 #region 1. 单件模式(Singleton Pattern):
 
@@ -367,27 +372,156 @@ Console.WriteLine("23种设计模式:");
 
 #region 16. 解释器模式(Interpreter Pattern):
 
-#region Structural code
+//Console.WriteLine("Interpreter:Structural code");
+//var structuralContext = new Interpreter.Structural.Context();
+//var list = new List<Interpreter.Structural.AbstractExpression>
+//{
+//    new Interpreter.Structural.TerminalExpression(),
+//    new Interpreter.Structural.NonterminalExpression(),
+//    new Interpreter.Structural.TerminalExpression(),
+//    new Interpreter.Structural.TerminalExpression()
+//};
 
-var context = new InterpreterPattern.Context();
+//foreach (var expression in list)
+//{
+//    expression.Interpret(structuralContext);
+//}
 
-var list = new List<AbstractExpression>();
 
-list.Add(new TerminalExpression());
-list.Add(new NonterminalExpression());
-list.Add(new TerminalExpression());
-list.Add(new TerminalExpression());
+//Console.WriteLine("\r\nInterpreter:RealWorld code");
+//var roman = "MCMXXVIII";
+//var realWorldContext = new Interpreter.RealWorld.Context(roman);
 
-foreach (var expression in list)
-{
-    expression.Interpret(context);
-}
+//var tree = new List<Interpreter.RealWorld.Expression>()
+//{
+//    new Interpreter.RealWorld.ThousandExpression(),
+//    new Interpreter.RealWorld.HundredExpress(),
+//    new Interpreter.RealWorld.TenExpress(),
+//    new Interpreter.RealWorld.OneExpress(),
+//};
+
+//foreach (var exp in tree)
+//{
+//    exp.Interpret(realWorldContext);
+//}
+
+//Console.WriteLine($"{roman} = {realWorldContext.Output}");
+
 
 #endregion
 
+#region 17. 中介者模式(Mediator Pattern)
+
+//Console.WriteLine("Mediator:Structural code");
+
+//var m = new Mediator.Structural.ConcreteMediator();
+//var c1 = new Mediator.Structural.ConcreteColleague1(m);
+//var c2=new Mediator.Structural.ConcreteColleague2(m);
+//m.Colleague1 = c1;
+//m.Colleague2 = c2;
+
+//c1.Send("How are you?");
+//c2.Send("Fine,thanks");
+
+//Console.WriteLine("\r\nMediator:RealWorld code");
+
+//var chartRoom = new Mediator.RealWorld.ChatRoom();
+
+//var george = new Mediator.RealWorld.Beatle("George");
+//var paul = new Mediator.RealWorld.Beatle("Paul");
+//var ringo = new Mediator.RealWorld.Beatle("Ringo");
+//var john = new Mediator.RealWorld.Beatle("John");
+//var yoko = new Mediator.RealWorld.NonBeatle("Yoko");
+
+//chartRoom.Register(george);
+//chartRoom.Register(paul);
+//chartRoom.Register(ringo);
+//chartRoom.Register(john);
+//chartRoom.Register(yoko);
+
+//yoko.Send("John","Hi John!");
+//paul.Send("Ringo","All you need is love");
+//ringo.Send("George","My sweet Lord");
+//paul.Send("John","Can't buy me love");
+//john.Send("Yoko","My sweet love");
+
 #endregion
 
-#region  组合模式(Composite Pattern):
+#region 18. 责任链模式(Chain of responsibility Pattern):
+
+//Console.WriteLine("Chain:Structural code");
+
+//var h1 = new Chain.Structural.ConcreteHandler1();
+//var h2 = new Chain.Structural.ConcreteHandler2();
+//var h3 = new Chain.Structural.ConcreteHandler3();
+//h1.SetSuccessor(h2);
+//h2.SetSuccessor(h3);
+
+//int[] requests = { 2, 5, 14, 22, 18, 3, 27, 20 };
+//foreach (var request in requests)
+//{
+//    h1.HandleRequest(request);
+//}
+
+//Console.WriteLine("\r\nChain:RealWorld code");
+
+//var larry = new Chain.RealWorld.Director();
+//var sam = new Chain.RealWorld.Director.VicePresident();
+//var tammy = new Chain.RealWorld.Director.President();
+
+//larry.SetSuccessor(sam);
+//sam.SetSuccessor(tammy);
+
+//var p = new Chain.RealWorld.Purchase(2034, 450, "Supplies");
+//larry.ProcessRequest(p);
+
+//p = new Chain.RealWorld.Purchase(2035, 32590.10, "Project X");
+//larry.ProcessRequest(p);
+
+//p = new Chain.RealWorld.Purchase(2036, 122100.00, "Project Y");
+//larry.ProcessRequest(p);
+
+#endregion
+
+#region 19. 备忘录模式(Memento Pattern)
+
+//Console.WriteLine("Memento:Structural code");
+
+//var o = new Memento.Structural.Originator
+//{
+//    State = "On"
+//};
+//var c =new Memento.Structural.Caretaker
+//{
+//    Memento = o.CreateMemento()
+//};
+
+//o.State = "Off";
+//o.SetMemento(c.Memento);
+
+//Console.WriteLine("\r\nMemento:RealWorld code");
+
+//var s = new Memento.RealWorld.SaleProspect()
+//{
+//    Name = "Noel van Halen",
+//    Phone = "(412) 256-0990",
+//    Budget = 25000.0
+//};
+
+//var m = new Memento.RealWorld.ProspectMemory
+//{
+//    Memento = s.SaveMemento()
+//};
+
+//s.Name = "Leo Welch";
+//s.Phone = "(310) 209-7111";
+//s.Budget = 1000000.0;
+
+//s.RestoreMemento(m.Memento);
+
+#endregion
+
+#region  20. 组合模式(Composite Pattern):
 
 //Console.WriteLine("组合模式(Composite Pattern):");
 
@@ -431,6 +565,13 @@ foreach (var expression in list)
 //root.Display(0);
 
 #endregion
+
+#region 策略模式(Strategy Pattern) 
+
+
+#endregion
+
+
 
 Console.WriteLine("按任意键结束...");
 Console.ReadKey();

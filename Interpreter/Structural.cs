@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design_Pattern
+﻿namespace Design_Pattern.Interpreter
 {
     /// <summary>
-    /// 解释器模式
+    /// Interpreter Design Pattern
     /// </summary>
-    public class InterpreterPattern
+    /// <remarks>
+    /// 演示了解释器模式，它使用定义的语法提供处理已解析语句的解释器。
+    /// https://dofactory.com/net/interpreter-design-pattern#structural
+    /// </remarks>
+    public class Structural
     {
-
-        #region Structural code
-
         public class Context
         {
         }
@@ -38,8 +33,5 @@ namespace Design_Pattern
                 Console.WriteLine("Called nonterminal.Interpret()");
             }
         }
-
-        #endregion
-
     }
 }
