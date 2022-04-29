@@ -1,66 +1,16 @@
-﻿namespace Design_Pattern
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Design_Pattern.Flyweight
 {
-    /// <summary>
-    /// 享元模式
-    /// </summary>
-    public class FlyweightPattern
+    public  class RealWorld
     {
-        #region 示例一
-
-        // /// <summary>
-        // /// The 'FlyweightFactory' class
-        // /// </summary>
-        // public class FlyweightFactory
-        // {
-        //     private Dictionary<string, Flyweight> Flyweights { get; } = new Dictionary<string, Flyweight>();
-        //
-        //     public FlyweightFactory()
-        //     {
-        //         Flyweights.Add("X", new ConcreteFlyweight());
-        //         Flyweights.Add("Y", new ConcreteFlyweight());
-        //         Flyweights.Add("Z", new ConcreteFlyweight());
-        //     }
-        //
-        //     public Flyweight GetFlyweight(string key)
-        //     {
-        //         return Flyweights[key];
-        //     }
-        // }
-        //
-        // /// <summary>
-        // /// The 'Flyweight' abstract class
-        // /// </summary>
-        // public abstract class Flyweight
-        // {
-        //     public abstract void Operation(int extrinsicstate);
-        // }
-        //
-        // /// <summary>
-        // /// The 'ConcreteFlyweight' class
-        // /// </summary>
-        // public class ConcreteFlyweight : Flyweight
-        // {
-        //     public override void Operation(int extrinsicstate)
-        //     {
-        //         Console.WriteLine($"ConcreteFlyweight:{extrinsicstate}");
-        //     }
-        // }
-        //
-        // public class UnsharedConcreteFlyweight : Flyweight
-        // {
-        //     public override void Operation(int extrinsicstate)
-        //     {
-        //         Console.WriteLine($"UnsharedConcreteFlyweight:{extrinsicstate}");
-        //     }
-        // }
-
-        #endregion
-
-        #region 示例二
-
         public class CharacterFactory
         {
-            private Dictionary<char,Character> _characters = new Dictionary<char,Character>();
+            private Dictionary<char, Character> _characters = new Dictionary<char, Character>();
 
             public Character GetCharacter(char key)
             {
@@ -74,11 +24,11 @@
                 {
                     switch (key)
                     {
-                        case 'A': character = new CharacterA();break;
-                        case 'B': character = new CharacterB();break;
-                        case 'Z': character = new CharacterZ();break;
+                        case 'A': character = new CharacterA(); break;
+                        case 'B': character = new CharacterB(); break;
+                        case 'Z': character = new CharacterZ(); break;
                     }
-                    _characters.Add(key,character);
+                    _characters.Add(key, character);
                 }
 
                 return character;
@@ -156,6 +106,5 @@
                 Console.WriteLine($"{symbol} (pointSize {pointSize})");
             }
         }
-        #endregion
     }
 }

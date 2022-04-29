@@ -1,64 +1,13 @@
-﻿
-namespace Design_Pattern
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Design_Pattern.Command
 {
-    /// <summary>
-    /// 命令模式
-    /// </summary>
-    public class CommandPattern
+    public  class RealWorld
     {
-        #region 示例一
-
-        //public abstract class Command
-        //{
-        //    protected Receiver Receiver;
-
-        //    protected Command(Receiver receiver)
-        //    {
-        //        this.Receiver= receiver;
-        //    }
-
-        //    public abstract  void Execute();
-        //}
-
-        //public class ConcreteCommand : Command
-        //{
-        //    public ConcreteCommand(Receiver receiver) : base(receiver)
-        //    {
-
-        //    }
-        //    public override void Execute()
-        //    {
-        //        Receiver.Action();
-        //    }
-        //}
-
-        //public class Receiver
-        //{
-        //    public void Action()
-        //    {
-        //        Console.WriteLine("Called Receiver.Action()");
-        //    }
-        //}
-
-        //public class Invoker
-        //{
-        //    private Command _command = null!;
-
-        //    public void SetCommand(Command command)
-        //    {
-        //        this._command=command;
-        //    }
-
-        //    public void ExecuteCommand()
-        //    {
-        //        _command.Execute();
-        //    }
-        //}
-
-        #endregion
-
-        #region 示例二
-
         public abstract class Command
         {
             public abstract void Execute();
@@ -165,7 +114,5 @@ namespace Design_Pattern
                 _current++;
             }
         }
-
-        #endregion
     }
 }

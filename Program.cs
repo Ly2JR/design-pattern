@@ -1,136 +1,206 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System.Data;
-using System.Net.Http.Json;
-using System.Text.Json;
-using System.Text.Json.Nodes;
+
+using System.Diagnostics.CodeAnalysis;
+using Singleton= Design_Pattern.Singleton;
+using AbstractFactory = Design_Pattern.AbstractFactory;
+using Builder=Design_Pattern.Builder;
+using FactoryMethod=Design_Pattern.FactoryMethod;
+using Prototype=Design_Pattern.Prototype;
+using Adapter=Design_Pattern.Adapter;
 using Mediator= Design_Pattern.Mediator;
 using Interpreter= Design_Pattern.Interpreter;
 using Chain=Design_Pattern.Chain;
 using Memento=Design_Pattern.Memento;
 
 
-#region 1. 单件模式(Singleton Pattern):
+#region 1. 单件模式
 
-//Console.WriteLine("单件模式(Singleton Pattern):");
+//Console.WriteLine("Singleton:Structural code");
 
-//var s1 = SingletonPattern.Instance();
-//var s2 = SingletonPattern.Instance();
-//if (s1.Equals(s2))
+//var s1 = Singleton.Structural.Singleton.Instance();
+//var s2 = Singleton.Structural.Singleton.Instance();
+////Test for same instance
+//if (s1==s2)
 //{
-//    Console.WriteLine("see,only one instance.");
+//    Console.WriteLine("Objects are the same instance");
+//}
+
+//Console.WriteLine("\r\nSingleton:RealWorld code");
+
+//var b1 = Singleton.RealWorld.LoadBalancer.GetLoadBalancer();
+//var b2 = Singleton.RealWorld.LoadBalancer.GetLoadBalancer();
+//var b3= Singleton.RealWorld.LoadBalancer.GetLoadBalancer();
+//var b4= Singleton.RealWorld.LoadBalancer.GetLoadBalancer();
+
+////Same instance?
+//if (b1 == b2 && b2 == b3 && b3 == b4)
+//{
+//    Console.WriteLine("Same instance\n");
+//}
+
+////Load balance 15 server requests
+
+//var balancer = Singleton.RealWorld.LoadBalancer.GetLoadBalancer();
+//for (var i = 0; i < 15; i++)
+//{
+//    var server = balancer.Server;
+//    Console.WriteLine($"Dispatch Request to:{server}");
 //}
 
 #endregion
 
-#region 2. 抽象工厂(Abstract Factory):
+#region 2. 抽象工厂
 
-//Console.WriteLine("抽象工厂(Abstract Factory):");
+//Console.WriteLine("AbstractFactory:Structural code");
 
-//var winFactory = new AbstractFactory.WinFactory();
-//var maxFactory = new AbstractFactory.MacFactory();
-//var iButton=winFactory.CreateButton();
-//iButton.Display();
-//var iBorder= winFactory.CreateBorder();
-//iBorder.Display();
+////Abstract factory #1
+//var factory1 = new AbstractFactory.Structural.ConcreteFactory1();
+//var client1 = new AbstractFactory.Structural.Client(factory1);
+//client1.Run();
 
-//iButton = maxFactory.CreateButton();
-//iButton.Display();
-//iBorder = maxFactory.CreateBorder();
-//iBorder.Display();
+////Abstract factory #2
+//var factory2 = new AbstractFactory.Structural.ConcreteFactory2();
+//var client2 = new AbstractFactory.Structural.Client(factory2);
+//client2.Run();
 
-#endregion
+//Console.WriteLine("\r\nAbstractFactory:RealWorld code");
 
-#region 3. 建造者模式(Builder):
+//var africa = new AbstractFactory.RealWorld.AfricaFactory();
+//var world = new AbstractFactory.RealWorld.AnimalWorld(africa);
+//world.RunFoodChain();
 
-//Console.WriteLine("建造者模式(Builder):");
-
-//var pd = new Builder.PersonDirector();
-//var person = pd.ConstructPerson(new Builder.ManBuilder());
-//Console.WriteLine(person.Body);
-//Console.WriteLine(person.Foot);
-//Console.WriteLine(person.Head);
+//var america = new AbstractFactory.RealWorld.AmericalFactory();
+//world = new AbstractFactory.RealWorld.AnimalWorld(america);
+//world.RunFoodChain();
 
 #endregion
 
-#region 4. 工厂方法模式(Factory Method):
+#region 3. 建造者模式
 
-//Console.WriteLine("工厂方法模式(Factory Method):");
+//Console.WriteLine("Builder:Structural code");
 
-//var shreddedPorkWithPotatoesFactory = new FactoryMethod.ShreddedPorkWithPotatoesFactory();
-//var tomatoScrambledEggsFactory = new FactoryMethod.TomatoScrambledEggsFactory();
+//var director = new Builder.Structural.Director();
 
-//var tomatoScrambleEggs = tomatoScrambledEggsFactory.CreateFoodFactory();
-//tomatoScrambleEggs.Print();
+//var b1 = new Builder.Structural.ConcreteBuilder1();
+//var b2 = new Builder.Structural.ConcreteBuilder2();
 
-//var shreddedPorkWithPotatoes = shreddedPorkWithPotatoesFactory.CreateFoodFactory();
-//shreddedPorkWithPotatoes.Print();
+//director.Construct(b1);
+//var p1 = b1.GetResult();
+//p1.Show();
+
+//director.Construct(b2);
+//var p2 = b2.GetResult();
+//p2.Show();
+
+//Console.WriteLine("Builder:RealWorld code");
+
+//Builder.RealWorld.VehicleBuilder builder;
+
+//var shop = new Builder.RealWorld.Shop();
+//builder = new Builder.RealWorld.ScooterBuilder();
+//shop.Construct(builder);
+//builder.Vehicle.Show();
+
+//builder = new Builder.RealWorld.CarBuilder();
+//shop.Construct(builder);
+//builder.Vehicle.Show();
+
+//builder = new Builder.RealWorld.MotorCycleBuilder();
+//shop.Construct(builder);
+//builder.Vehicle.Show();
 
 #endregion
 
-#region 5. 原型模式(Prototype):
+#region 4. 工厂方法模式
 
-//Console.WriteLine("原型模式(Prototype):");
+//Console.WriteLine("Factory Method:Structural code");
 
-#region 浅复制
-
-//var redColor = new Prototype.RedColor
+//var creators = new FactoryMethod.Structural.Creator[2];
+//creators[0] = new FactoryMethod.Structural.ConcreteCreatorA();
+//creators[1] = new FactoryMethod.Structural.ConcreteCreatorB();
+//foreach (var creator in creators)
 //{
-//    Red = 255
-//};
-//Console.WriteLine($"RedColor - Red {redColor.Red}");
-
-//var redColorClone = redColor.Clone();
-//if (redColorClone != null)
-//{
-//    redColorClone.Red = 224;
-//    Console.WriteLine($"RedColorClone - Red {redColorClone.Red}");
+//    var product = creator.FactoryMethod();
+//    Console.WriteLine($"Created {product.GetType().Name}");
 //}
 
-//Console.WriteLine($"RedColor - Red {redColor.Red}");
+//Console.WriteLine("\r\nFactory Method:RealWorld code");
 
-#endregion
+//var documents = new FactoryMethod.RealWorld.Document[2];
+//documents[0] = new FactoryMethod.RealWorld.Resume();
+//documents[1] = new FactoryMethod.RealWorld.Report();
 
-#region 深复复制
-
-//var redColor = new Prototype.RedColor
+//foreach (var document in documents)
 //{
-//    Red = 255,
-//    F = new Prototype.Factory() { Name = "RedColor" }
-//};
-//Console.WriteLine($"RedColor - Factory:{redColor.F.Name}; Red - {redColor.Red}");
-
-//var redColorClone = redColor.Clone();
-//if (redColorClone != null)
-//{
-//    redColorClone.Red = 234;
-//    if (redColorClone.F != null)
+//    Console.WriteLine($"\n{document.GetType().Name}--");
+//    foreach (var page in document.Pages)
 //    {
-//        redColorClone.F.Name = "RedColorClone";
-//        Console.WriteLine($"RedColorClone - Factory {redColorClone.F.Name}; Red - {redColorClone.Red}");
+//        Console.WriteLine($" {page.GetType().Name}");
 //    }
 //}
 
 #endregion
 
+#region 5. 原型模式
+
+//Console.WriteLine("Prototype:Structural code");
+
+//var p1 = new Prototype.Structural.ConcretePrototype1("I");
+//var c1 = (Prototype.Structural.ConcretePrototype1)p1.Clone();
+//Console.WriteLine($"Cloned:{c1.Id}");
+
+//var p2=new Prototype.Structural.ConcretePrototype2("II");
+//var c2 = (Prototype.Structural.ConcretePrototype2)p2.Clone();
+//Console.WriteLine($"Cloned:{c2.Id}");
+
+
+//Console.WriteLine("\r\nPrototype:RealWorld code");
+
+//var colorManager = new Prototype.RealWorld.ColorManager
+//{
+//    ["red"] = new Prototype.RealWorld.Color(255, 0, 0),
+//    ["green"] = new Prototype.RealWorld.Color(0, 255, 0),
+//    ["blue"] = new Prototype.RealWorld.Color(0, 0, 255)
+//};
+
+////User adds personalized colors
+//colorManager["angry"]=new Prototype.RealWorld.Color(255, 54, 0);
+//colorManager["peace"] = new Prototype.RealWorld.Color(128, 211, 128);
+//colorManager["flame"] = new Prototype.RealWorld.Color(211, 34, 20);
+
+////User clones selected colors
+//var color1 = colorManager["red"].Clone() as Prototype.RealWorld.Color;
+//var color2 = colorManager["peace"].Clone() as Prototype.RealWorld.Color;
+//var color3= colorManager["flame"].Clone() as Prototype.RealWorld.Color;
+
 #endregion
 
-#region 6. 适配器模式(Adapter Pattern):
+#region 6. 适配器模式
 
-//Console.WriteLine(" 适配器模式(Adapter Pattern):");
+Console.WriteLine("Adapter:Structural code");
 
-//var adapterClass = new AdapterPattern.AdapterClass();
-//adapterClass.Request();
-//Console.WriteLine();
-//var adapterInterface = new AdapterPattern.AdapterInterface();    
-//adapterInterface.Request();
+var target = new Adapter.Structural.Adapter();
+target.Request();
 
-//var defaultAdapter = new AdapterPattern.MyInteresting();
-//defaultAdapter.F3();
+
+Console.WriteLine("\r\nAdapter:RealWorld code");
+
+var unknown = new Adapter.RealWorld.Compound();
+unknown.Display();
+
+var water = new Adapter.RealWorld.RichCompound("Water");
+water.Display();
+
+var benzene = new Adapter.RealWorld.RichCompound("Benzene");
+benzene.Display();
+
+var ethanol = new Adapter.RealWorld.RichCompound("Ethanol");
+ethanol.Display();
 
 #endregion
 
-#region 7. 桥接模式(Bridge Pattern):
+#region 7. 桥接模式
 
 //Console.WriteLine("桥接模式(Bridge Pattern):");
 
@@ -145,7 +215,7 @@ using Memento=Design_Pattern.Memento;
 
 #endregion
 
-#region 8. 装饰模式(Decorator Pattern):
+#region 8. 装饰模式
 
 //Console.WriteLine("装饰模式(Decorator Pattern):");
 
@@ -156,7 +226,7 @@ using Memento=Design_Pattern.Memento;
 
 #endregion
 
-#region  9. 外观模式(Facade Pattern)：
+#region  9. 外观模式
 
 //Console.WriteLine("外观模式(Facade Pattern)：");
 
@@ -166,7 +236,7 @@ using Memento=Design_Pattern.Memento;
 
 #endregion
 
-#region 10. 享元模式(Flyweight Pattern):
+#region 10. 享元模式
 
 //Console.WriteLine("享元模式(Flyweight Pattern):");
 
@@ -210,7 +280,7 @@ using Memento=Design_Pattern.Memento;
 #endregion
 #endregion
 
-#region 11. 代理模式(Proxy Pattern):
+#region 11. 代理模式
 
 //Console.WriteLine("代理模式(Proxy Pattern):");
 
@@ -233,7 +303,7 @@ using Memento=Design_Pattern.Memento;
 
 #endregion
 
-#region 12. 模板方法(Template Method):
+#region 12. 模板方法
 
 //Console.WriteLine("模板方法(Template Method):");
 
@@ -259,7 +329,7 @@ using Memento=Design_Pattern.Memento;
 
 #endregion
 
-#region 13. 命令模式(Command Pattern):
+#region 13. 命令模式
 
 //Console.WriteLine("命令模式(Command Pattern):");
 
@@ -288,7 +358,7 @@ using Memento=Design_Pattern.Memento;
 
 #endregion
 
-#region 14. 迭代器模式(Iterator Pattern)
+#region 14. 迭代器模式
 
 #region Structural Code
 
@@ -341,7 +411,7 @@ using Memento=Design_Pattern.Memento;
 
 #endregion
 
-#region 15. 观察者模式(Observer Pattern)
+#region 15. 观察者模式
 
 #region Structrual code
 
@@ -370,7 +440,7 @@ using Memento=Design_Pattern.Memento;
 
 #endregion
 
-#region 16. 解释器模式(Interpreter Pattern):
+#region 16. 解释器模式
 
 //Console.WriteLine("Interpreter:Structural code");
 //var structuralContext = new Interpreter.Structural.Context();
@@ -410,7 +480,7 @@ using Memento=Design_Pattern.Memento;
 
 #endregion
 
-#region 17. 中介者模式(Mediator Pattern)
+#region 17. 中介者模式
 
 //Console.WriteLine("Mediator:Structural code");
 
@@ -447,7 +517,7 @@ using Memento=Design_Pattern.Memento;
 
 #endregion
 
-#region 18. 责任链模式(Chain of responsibility Pattern):
+#region 18. 责任链模式
 
 //Console.WriteLine("Chain:Structural code");
 
@@ -483,7 +553,7 @@ using Memento=Design_Pattern.Memento;
 
 #endregion
 
-#region 19. 备忘录模式(Memento Pattern)
+#region 19. 备忘录模式
 
 //Console.WriteLine("Memento:Structural code");
 
@@ -521,7 +591,7 @@ using Memento=Design_Pattern.Memento;
 
 #endregion
 
-#region  20. 组合模式(Composite Pattern):
+#region  20. 组合模式
 
 //Console.WriteLine("组合模式(Composite Pattern):");
 
@@ -566,7 +636,17 @@ using Memento=Design_Pattern.Memento;
 
 #endregion
 
-#region 策略模式(Strategy Pattern) 
+#region 21. 策略模式
+
+
+#endregion
+
+#region 22. 策略模式
+
+
+#endregion
+
+#region 23. 策略模式
 
 
 #endregion
