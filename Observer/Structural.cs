@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design_Pattern.Observer
+﻿namespace Design_Pattern.Observer
 {
-    public  class Structural
+    /// <summary>
+    /// Observer Design Pattern
+    /// </summary>
+    /// <remarks>
+    /// 演示了观察者模式。
+    /// 在该模式中，已注册对象被通知并随着状态更改而更新。
+    /// https://www.dofactory.com/net/observer-design-pattern#structural
+    /// </remarks>
+    public class Structural
     {
         public abstract class Subject
         {

@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design_Pattern.Proxy
+﻿namespace Design_Pattern.Proxy
 {
-    public  class RealWorld
+    /// <summary>
+    /// Proxy Design Pattern
+    /// </summary>
+    /// <remarks>
+    /// 演示了由MathProxy对象表示的Math对象的代理模式。
+    /// https://www.dofactory.com/net/proxy-design-pattern#realworld
+    /// </remarks>
+    public class RealWorld
     {
         public interface IMath
         {
@@ -41,7 +42,7 @@ namespace Design_Pattern.Proxy
 
         public class MathProxy : IMath
         {
-            private Math _math = new Math();
+            private readonly Math _math = new Math();
 
             public double Add(double x, double y)
             {

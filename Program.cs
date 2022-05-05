@@ -2,16 +2,28 @@
 
 
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices.ComTypes;
 using Singleton= Design_Pattern.Singleton;
 using AbstractFactory = Design_Pattern.AbstractFactory;
 using Builder=Design_Pattern.Builder;
 using FactoryMethod=Design_Pattern.FactoryMethod;
 using Prototype=Design_Pattern.Prototype;
 using Adapter=Design_Pattern.Adapter;
+using Bridge=Design_Pattern.Bridge;
+using Decorator=Design_Pattern.Decorator;
+using Composite=Design_Pattern.Composite;
+using Facade=Design_Pattern.Facade;
+using Flyweight=Design_Pattern.Flyweight;
+using Proxy=Design_Pattern.Proxy;
+using TemplateMethod=Design_Pattern.TemplateMethod;
+using Command=Design_Pattern.Command;
+using Iterator=Design_Pattern.Iterator;
+using Observer=Design_Pattern.Observer;
+using Interpreter = Design_Pattern.Interpreter;
 using Mediator= Design_Pattern.Mediator;
-using Interpreter= Design_Pattern.Interpreter;
 using Chain=Design_Pattern.Chain;
 using Memento=Design_Pattern.Memento;
+using Strategy=Design_Pattern.Strategy;
 
 
 #region 1. 单件模式
@@ -178,72 +190,112 @@ using Memento=Design_Pattern.Memento;
 
 #region 6. 适配器模式
 
-Console.WriteLine("Adapter:Structural code");
+//Console.WriteLine("Adapter:Structural code");
 
-var target = new Adapter.Structural.Adapter();
-target.Request();
+//var target = new Adapter.Structural.Adapter();
+//target.Request();
 
 
-Console.WriteLine("\r\nAdapter:RealWorld code");
+//Console.WriteLine("\r\nAdapter:RealWorld code");
 
-var unknown = new Adapter.RealWorld.Compound();
-unknown.Display();
+//var unknown = new Adapter.RealWorld.Compound();
+//unknown.Display();
 
-var water = new Adapter.RealWorld.RichCompound("Water");
-water.Display();
+//var water = new Adapter.RealWorld.RichCompound("Water");
+//water.Display();
 
-var benzene = new Adapter.RealWorld.RichCompound("Benzene");
-benzene.Display();
+//var benzene = new Adapter.RealWorld.RichCompound("Benzene");
+//benzene.Display();
 
-var ethanol = new Adapter.RealWorld.RichCompound("Ethanol");
-ethanol.Display();
+//var ethanol = new Adapter.RealWorld.RichCompound("Ethanol");
+//ethanol.Display();
 
 #endregion
 
 #region 7. 桥接模式
 
-//Console.WriteLine("桥接模式(Bridge Pattern):");
+//Console.WriteLine("Bridge:Structural code");
 
-//var shapes = new BridgePattern.IShape[2];
-//shapes[0] = new BridgePattern.CircleShape(1, 2, 3, new BridgePattern.DrawingApi1());
-//shapes[1] = new BridgePattern.CircleShape(5, 7, 11, new BridgePattern.DrawingApi2());
-//foreach (var shape in shapes)
+//var ab = new Bridge.Structural.RefinedAbstraction
 //{
-//    shape.ResizeByPercentage(2.5);
-//    shape.Draw();
-//}
+//    Implementor = new Bridge.Structural.ConcreteImplementorA()
+//};
+//ab.Operation();
+
+//ab.Implementor = new Bridge.Structural.ConcreteImplementorB();
+//ab.Operation();
+
+//Console.WriteLine("\r\nRealWorld code");
+
+//var customers = new Bridge.RealWorld.Customers
+//{
+//    Data = new Bridge.RealWorld.CustomersData("Chicago")
+//};
+
+//customers.Show();
+//customers.Next();
+//customers.Show();
+//customers.Next();
+//customers.Show();
+//customers.Add("Henry Velasquez");
+//customers.ShowAll();
 
 #endregion
 
 #region 8. 装饰模式
 
-//Console.WriteLine("装饰模式(Decorator Pattern):");
+//Console.WriteLine("Decorator:Structural code ------ ");
+//var c = new Decorator.Structural.ConcreteComponent();
+//var d1 = new Decorator.Structural.ConcreteDecoratorA();
+//var d2= new Decorator.Structural.ConcreteDecoratorB();
 
-//var thirdPartyOne = new DecoratorPattern.ThirdParty();
-//var decorator1 = new DecoratorPattern.Decorator1(thirdPartyOne);
-//var decorator2 = new DecoratorPattern.Decorator2(decorator1);
-//Console.WriteLine(decorator2.SayMsg());
+//d1.SetComponent(c);
+//d2.SetComponent(d1);
+
+//d2.Operation();
+
+//Console.WriteLine("\r\nRealWorld code ------- ");
+
+//var book = new Decorator.RealWorld.Book("Worley", "Inside ASP.NET", 10);
+//book.Display();
+
+//var video = new Decorator.RealWorld.Video("Spielberg", "Jaws", 23, 92);
+//video.Display();
+
+//Console.WriteLine("\nMaking video borrowable:");
+
+//var borrowvideo = new Decorator.RealWorld.Borrowable(video);
+//borrowvideo.BorrowItem("Customer #1");
+//borrowvideo.BorrowItem("Customer #2");
+//borrowvideo.Display();
 
 #endregion
 
 #region  9. 外观模式
 
-//Console.WriteLine("外观模式(Facade Pattern)：");
+//Console.WriteLine("Facade:Structural code ------ ");
 
-//FacadePattern.Facade facade = new FacadePattern.Facade();
+//var facade = new Facade.Structural.Facade();
 //facade.MethodA();
 //facade.MethodB();
+
+//Console.WriteLine("\r\nFacade:RealWorld code ------ ");
+
+//var mortgage = new Facade.RealWorld.Mortgage();
+
+//var customer = new Facade.RealWorld.Customer("Ann McKinsey");
+//bool eligible = mortgage.IsEligible(customer, 125000);
+//Console.WriteLine($"\n{customer.Name} has been {(eligible?"Approved":"Rejected")}");
 
 #endregion
 
 #region 10. 享元模式
 
-//Console.WriteLine("享元模式(Flyweight Pattern):");
+//Console.WriteLine("Flyweight:Structural code ------ ");
 
-#region 示例一
 ////Arbitrary extrinsic state
 //int extrinsicstate = 22;
-//var factory = new FlyweightPattern.FlyweightFactory();
+//var factory = new Flyweight.Structural.FlyweightFactory();
 ////Work with different flyweight instances
 
 //var fx = factory.GetFlyweight("X");
@@ -252,19 +304,19 @@ ethanol.Display();
 //var fy = factory.GetFlyweight("Y");
 //fy.Operation(--extrinsicstate);
 
-//var fz= factory.GetFlyweight("Z");
+//var fz = factory.GetFlyweight("Z");
 //fz.Operation(--extrinsicstate);
 
-//var fu = new FlyweightPattern.UnsharedConcreteFlyweight();
-//fu.Operation(--extrinsicstate);
-#endregion
 
-#region 示例二
+//Console.WriteLine("\r\nFlyweight:RealWorld code ------ ");
+
+//var fu = new Flyweight.Structural.UnsharedConcreteFlyweight();
+//fu.Operation(--extrinsicstate);
 
 //string document = "AAZZBBZB";
 //var chars = document.ToCharArray();
 
-//var factory = new FlyweightPattern.CharacterFactory();
+//var factory2 = new Flyweight.RealWorld.CharacterFactory();
 
 ////extrinsic state
 //int pointSize = 10;
@@ -273,96 +325,80 @@ ethanol.Display();
 //foreach (var c in chars)
 //{
 //    pointSize++;
-//    var character = factory.GetCharacter(c);
+//    var character = factory2.GetCharacter(c);
 //    character.Display(pointSize);
 //}
 
 #endregion
-#endregion
 
 #region 11. 代理模式
 
-//Console.WriteLine("代理模式(Proxy Pattern):");
+//Console.WriteLine("Proxy:Structural code ------ ");
 
-#region 示例一
-
-//var proxy = new ProxyPattern.Proxy() ;
+//var proxy = new Proxy.Structural.Proxy();
 //proxy.Request();
 
-#endregion
 
-#region 示例二
+//Console.WriteLine("\r\nProxy:RealWorld code ------ ");
 
-//var proxy = new ProxyPattern.MathProxy();
-//Console.WriteLine($"4 + 2 = {proxy.Add(4, 2)}");
-//Console.WriteLine($"4 - 2 = {proxy.Sub(4, 2)}");
-//Console.WriteLine($"4 * 2 = {proxy.Mul(4, 2)}");
-//Console.WriteLine($"4 / 2 = {proxy.Div(4, 2)}");
-
-#endregion
+//var proxy2 = new Proxy.RealWorld.MathProxy();
+//Console.WriteLine($"4 + 2 = {proxy2.Add(4, 2)}");
+//Console.WriteLine($"4 - 2 = {proxy2.Sub(4, 2)}");
+//Console.WriteLine($"4 * 2 = {proxy2.Mul(4, 2)}");
+//Console.WriteLine($"4 / 2 = {proxy2.Div(4, 2)}");
 
 #endregion
 
 #region 12. 模板方法
 
-//Console.WriteLine("模板方法(Template Method):");
+//Console.WriteLine("Template Method:Structural code ------ ");
 
-#region 示例一
-
-//var aA = new TemplateMethod.ConcreteClassA();
+//var aA = new TemplateMethod.Structural.ConcreteClassA();
 //aA.TemplateMethod();
 
-//var aB = new TemplateMethod.ConcreteClassB();
+//var aB = new TemplateMethod.Structural.ConcreteClassB();
 //aB.TemplateMethod();
 
-#endregion
 
-#region 示例二
+//Console.WriteLine("\r\nTemplate Method:RealWorld code ------ ");
 
-//var categories = new TemplateMethod.Categories();
+
+//var categories = new TemplateMethod.RealWorld.Categories();
 //categories.Run(5);
 
-//var products=new TemplateMethod.Products();
+//var products = new TemplateMethod.RealWorld.Products();
 //products.Run(3);
-
-#endregion
 
 #endregion
 
 #region 13. 命令模式
 
-//Console.WriteLine("命令模式(Command Pattern):");
+//Console.WriteLine("Command:Structural code ------ ");
 
-#region 示例一
-
-//var receiver = new CommandPattern.Receiver();
-//var command = new CommandPattern.ConcreteCommand(receiver);
-//var invoker = new CommandPattern.Invoker();
+//var receiver = new Command.Structural.Receiver();
+//var command = new Command.Structural.ConcreteCommand(receiver);
+//var invoker = new Command.Structural.Invoker();
 //invoker.SetCommand(command);
 //invoker.ExecuteCommand();
 
-#endregion
+//Console.WriteLine("\r\nCommand:RealWorld code ------ ");
 
-#region 示例二
-
-//var user = new CommandPattern.User();
-//user.Compute('+',100);
-//user.Compute('-',50);
-//user.Compute('*',10);
-//user.Compute('/',2);
+//var user = new Command.RealWorld.User();
+//user.Compute('+', 100);
+//user.Compute('-', 50);
+//user.Compute('*', 10);
+//user.Compute('/', 2);
 
 //user.Undo(4);
 //user.Redo(3);
 
 #endregion
 
-#endregion
-
 #region 14. 迭代器模式
 
-#region Structural Code
+//Console.WriteLine("Iterator:Structural code ------ ");
 
-//var aggregate = new IteratorPattern.ConcreteAggregate
+//var aggregate = new Iterator.Structural.ConcreteAggregate
 //{
 //    [0] = "Item A",
 //    [1] = "Item B",
@@ -380,11 +416,10 @@ ethanol.Display();
 //    item = iterator.Next();
 //}
 
-#endregion
 
-#region Real-word Code
+//Console.WriteLine("\r\nIterator:RealWorld code ------ ");
 
-//var collection = new IteratorPattern.Collection
+//var collection = new Iterator.RealWorld.Collection
 //{
 //    [0] = new("Item 0"),
 //    [1] = new("Item 1"),
@@ -397,52 +432,50 @@ ethanol.Display();
 //    [8] = new("Item 8"),
 //};
 
-//var iterator = collection.CreateIterator();
-//iterator.Step = 2;
+//var iterator2 = collection.CreateIterator();
+//iterator2.Step = 2;
 
 //Console.WriteLine("Iterating over collection:");
 
-//for (var item=iterator.First();!iterator.IsDone;item=iterator.Next())
+//for (var item2 = iterator2.First(); !iterator2.IsDone; item2 = iterator2.Next())
 //{
-//    if (item != null) Console.WriteLine(item.Name);
+//    if (item2 != null) Console.WriteLine(item2.Name);
 //}
-#endregion
 
 
 #endregion
 
 #region 15. 观察者模式
 
-#region Structrual code
+//Console.WriteLine("Observer:Structural code ------ ");
 
-//var s = new ObserverPattern.ConcreteSubject();
-//s.Attach(new ObserverPattern.ConcreteObserver(s,"x"));
-//s.Attach(new ObserverPattern.ConcreteObserver(s, "y"));
-//s.Attach(new ObserverPattern.ConcreteObserver(s, "z"));
+//var s = new Observer.Structural.ConcreteSubject();
+//s.Attach(new Observer.Structural.ConcreteObserver(s, "x"));
+//s.Attach(new Observer.Structural.ConcreteObserver(s, "y"));
+//s.Attach(new Observer.Structural.ConcreteObserver(s, "z"));
 
 //s.SubjectState = "ABC";
 //s.Notify();
 
-#endregion
 
-#region Real-world code
+//Console.WriteLine("\r\nObserver:RealWorld code ------ ");
 
-//var ibm = new ObserverPattern.IBM("IBM", 120.00);
-//ibm.Attach(new ObserverPattern.Investor("Sorros"));
-//ibm.Attach(new ObserverPattern.Investor("Berkshire"));
+//var ibm = new Observer.RealWorld.IBM("IBM", 120.00);
+//ibm.Attach(new Observer.RealWorld.Investor("Sorros"));
+//ibm.Attach(new Observer.RealWorld.Investor("Berkshire"));
 
 //ibm.Price = 120.10;
 //ibm.Price = 121.00;
 //ibm.Price = 120.50;
 //ibm.Price = 120.75;
 
-#endregion
 
 #endregion
 
 #region 16. 解释器模式
 
 //Console.WriteLine("Interpreter:Structural code");
+
 //var structuralContext = new Interpreter.Structural.Context();
 //var list = new List<Interpreter.Structural.AbstractExpression>
 //{
@@ -457,8 +490,8 @@ ethanol.Display();
 //    expression.Interpret(structuralContext);
 //}
 
-
 //Console.WriteLine("\r\nInterpreter:RealWorld code");
+
 //var roman = "MCMXXVIII";
 //var realWorldContext = new Interpreter.RealWorld.Context(roman);
 
@@ -477,23 +510,22 @@ ethanol.Display();
 
 //Console.WriteLine($"{roman} = {realWorldContext.Output}");
 
-
 #endregion
 
 #region 17. 中介者模式
 
-//Console.WriteLine("Mediator:Structural code");
+//Console.WriteLine("Mediator:Structural code ------- ");
 
 //var m = new Mediator.Structural.ConcreteMediator();
 //var c1 = new Mediator.Structural.ConcreteColleague1(m);
-//var c2=new Mediator.Structural.ConcreteColleague2(m);
+//var c2 = new Mediator.Structural.ConcreteColleague2(m);
 //m.Colleague1 = c1;
 //m.Colleague2 = c2;
 
 //c1.Send("How are you?");
 //c2.Send("Fine,thanks");
 
-//Console.WriteLine("\r\nMediator:RealWorld code");
+//Console.WriteLine("\r\nMediator:RealWorld code ------ ");
 
 //var chartRoom = new Mediator.RealWorld.ChatRoom();
 
@@ -509,11 +541,11 @@ ethanol.Display();
 //chartRoom.Register(john);
 //chartRoom.Register(yoko);
 
-//yoko.Send("John","Hi John!");
-//paul.Send("Ringo","All you need is love");
-//ringo.Send("George","My sweet Lord");
-//paul.Send("John","Can't buy me love");
-//john.Send("Yoko","My sweet love");
+//yoko.Send("John", "Hi John!");
+//paul.Send("Ringo", "All you need is love");
+//ringo.Send("George", "My sweet Lord");
+//paul.Send("John", "Can't buy me love");
+//john.Send("Yoko", "My sweet love");
 
 #endregion
 
@@ -555,13 +587,13 @@ ethanol.Display();
 
 #region 19. 备忘录模式
 
-//Console.WriteLine("Memento:Structural code");
+//Console.WriteLine("Memento:Structural code ------ ");
 
 //var o = new Memento.Structural.Originator
 //{
 //    State = "On"
 //};
-//var c =new Memento.Structural.Caretaker
+//var c = new Memento.Structural.Caretaker
 //{
 //    Memento = o.CreateMemento()
 //};
@@ -569,7 +601,7 @@ ethanol.Display();
 //o.State = "Off";
 //o.SetMemento(c.Memento);
 
-//Console.WriteLine("\r\nMemento:RealWorld code");
+//Console.WriteLine("\r\nMemento:RealWorld code ------ ");
 
 //var s = new Memento.RealWorld.SaleProspect()
 //{
@@ -593,51 +625,76 @@ ethanol.Display();
 
 #region  20. 组合模式
 
-//Console.WriteLine("组合模式(Composite Pattern):");
+//Console.WriteLine("Composite:Structural code ------ ");
 
-//CompositePattern.Company root = new CompositePattern.ConcreteCompany();
-//root.Name = "北京总公司";
-//root.Add(new CompositePattern.HRDepartment("总公司人力资源部"));
-//root.Add(new CompositePattern.FinanceDepartment("总公司财务部"));
+//var root = new Composite.Structural.Composite("root");
+//root.Add(new Composite.Structural.Leaf("Leaf A"));
+//root.Add(new Composite.Structural.Leaf("Leaf B"));
 
-//CompositePattern.Company shandongCompany = new CompositePattern.ConcreteCompany("山东分公司");
-//shandongCompany.Add(new CompositePattern.HRDepartment("山东分公司人力资源部"));
-//shandongCompany.Add(new CompositePattern.FinanceDepartment("山东分公司财务部"));
+//var comp = new Composite.Structural.Composite("Composite X");
+//comp.Add(new Composite.Structural.Leaf("Leaf XA"));
+//comp.Add(new Composite.Structural.Leaf("Leaf XB"));
+//root.Add(comp);
+//root.Add(new Composite.Structural.Leaf("Leaf C"));
 
-//CompositePattern.Company zaozhuangCompany = new CompositePattern.ConcreteCompany("枣庄办事处");
-//zaozhuangCompany.Add(new CompositePattern.FinanceDepartment("枣庄办事处财务部"));
-//zaozhuangCompany.Add(new CompositePattern.HRDepartment("枣庄办事处人力资源部"));
+//var leaf = new Composite.Structural.Leaf("Leaf D");
+//root.Add(leaf);
+//root.Remove(leaf);
 
-//CompositePattern.Company jinanCompany = new CompositePattern.ConcreteCompany("济南办事处");
-//jinanCompany.Add(new CompositePattern.FinanceDepartment("济南办事处财务部"));
-//jinanCompany.Add(new CompositePattern.HRDepartment("济南办事处人力资源部"));
+//root.Display(1);
 
-//shandongCompany.Add(jinanCompany);
-//shandongCompany.Add(zaozhuangCompany);
+//Console.WriteLine("\r\nComposite:RealWorld code ------ ");
 
-//CompositePattern.Company huadongCompany = new CompositePattern.ConcreteCompany("上海华东分公司");
-//huadongCompany.Add(new CompositePattern.FinanceDepartment("上海华东分公司财务部"));
-//huadongCompany.Add(new CompositePattern.HRDepartment("上海华东分公司人力资源部"));
+//var root2 = new Composite.RealWorld.CompositeElement("Picture");
+//root2.Add(new Composite.RealWorld.PrimitiveElement("Red Line"));
+//root2.Add(new Composite.RealWorld.PrimitiveElement("Blue Circle"));
+//root2.Add(new Composite.RealWorld.PrimitiveElement("Green Box"));
 
-//CompositePattern.Company hangzhouCompany = new CompositePattern.ConcreteCompany("杭州办事处");
-//hangzhouCompany.Add(new CompositePattern.FinanceDepartment("杭州办事处财务部"));
-//hangzhouCompany.Add(new CompositePattern.HRDepartment("杭州办事处人力资源部"));
+//var comp2 = new Composite.RealWorld.CompositeElement("Two Circles");
+//comp2.Add(new Composite.RealWorld.PrimitiveElement("Black Circle"));
+//comp2.Add(new Composite.RealWorld.PrimitiveElement("White Circle"));
+//root2.Add(comp2);
 
-//CompositePattern.Company nanjingCompany = new CompositePattern.ConcreteCompany("南京办事处");
-//nanjingCompany.Add(new CompositePattern.FinanceDepartment("南京办事处财务部"));
-//nanjingCompany.Add(new CompositePattern.HRDepartment("南京办事处人力资源部"));
+//var pe = new Composite.RealWorld.PrimitiveElement("Yellow Line");
+//root2.Add(pe);
+//root2.Remove(pe);
 
-//huadongCompany.Add(hangzhouCompany);
-//huadongCompany.Add(nanjingCompany);
-
-//root.Add(shandongCompany);
-//root.Add(huadongCompany);
-//root.Display(0);
+//root2.Display(1);
 
 #endregion
 
 #region 21. 策略模式
 
+Console.WriteLine("Strategy:Structural code");
+
+Strategy.Structural.Context context;
+
+context = new Strategy.Structural.Context(new Strategy.Structural.ConcreteStrategyA());
+context.ContextInterface();
+
+context = new Strategy.Structural.Context(new Strategy.Structural.ConcreteStrategyB());
+context.ContextInterface();
+
+context = new Strategy.Structural.Context(new Strategy.Structural.ConcreteStrategyC());
+context.ContextInterface();
+
+Console.WriteLine("\r\nStrategy:RealWorld code");
+
+var studentRecords = new Strategy.RealWorld.SortedList();
+studentRecords.Add("Samual");
+studentRecords.Add("Jimmy");
+studentRecords.Add("Sandra");
+studentRecords.Add("Vivek");
+studentRecords.Add("Anna");
+
+studentRecords.SetSortStrategy(new Strategy.RealWorld.QuickSort());
+studentRecords.Sort();
+
+studentRecords.SetSortStrategy(new Strategy.RealWorld.ShellSort());
+studentRecords.Sort();
+
+studentRecords.SetSortStrategy(new Strategy.RealWorld.MergeSort());
+studentRecords.Sort();
 
 #endregion
 

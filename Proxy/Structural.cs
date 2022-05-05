@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design_Pattern.Proxy
+﻿namespace Design_Pattern.Proxy
 {
-    public  class Structural
+    /// <summary>
+    /// Proxy Design Pattern
+    /// </summary>
+    /// <remarks>
+    /// 演示了代理模式，它提供了一个代表对象(代理)来控制对另一个类似对象的访问。
+    /// https://www.dofactory.com/net/proxy-design-pattern#structural
+    /// </remarks>
+    public class Structural
     {
-        /// <summary>
-        /// The 'subject' abstract class
-        /// </summary>
         public abstract class Subject
         {
             public abstract void Request();

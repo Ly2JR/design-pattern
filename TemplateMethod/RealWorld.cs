@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design_Pattern.TemplateMethod
+﻿namespace Design_Pattern.TemplateMethod
 {
-    public  class RealWorld
+    /// <summary>
+    /// Template Method Design Pattern
+    /// </summary>
+    /// <remarks>
+    /// 演示了一个名为Run()的模板方法，它提供了一个框架调用方法序列。
+    /// 这些步骤的实现被推迟到实现Connect、Select、Process和Disconnect方法的CustomerDataObject子类。
+    /// https://www.dofactory.com/net/template-method-design-pattern#realworld
+    /// </remarks>
+    public class RealWorld
     {
         public abstract class DataAccessor
         {
@@ -27,7 +29,7 @@ namespace Design_Pattern.TemplateMethod
 
         public class Categories : DataAccessor
         {
-            private List<string>? _categories;
+            private List<string> _categories;
 
             public override void Connect()
             {
@@ -66,7 +68,7 @@ namespace Design_Pattern.TemplateMethod
 
         public class Products : DataAccessor
         {
-            private List<string>? _products;
+            private List<string> _products;
 
             public override void Connect()
             {

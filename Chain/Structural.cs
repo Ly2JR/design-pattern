@@ -26,7 +26,7 @@
         {
             public override void HandleRequest(int request)
             {
-                if (request >= 0 && request < 10)
+                if (request is >= 0 and < 10)
                 {
                     Console.WriteLine($"{this.GetType().Name} handled request {request}");
 
@@ -41,7 +41,7 @@
         {
             public override void HandleRequest(int request)
             {
-                if (request >= 10 && request < 20)
+                if (request is >= 10 and < 20)
                 {
                     Console.WriteLine($"{this.GetType().Name} handled request {request}");
 
@@ -57,7 +57,7 @@
         {
             public override void HandleRequest(int request)
             {
-                if (request >= 20 && request < 30)
+                if (request is >= 20 and < 30)
                 {
                     Console.WriteLine($"{this.GetType().Name} handled request {request}");
 

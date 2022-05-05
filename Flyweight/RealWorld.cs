@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design_Pattern.Flyweight
+﻿namespace Design_Pattern.Flyweight
 {
-    public  class RealWorld
+    /// <summary>
+    /// Flyweight Design Pattern
+    /// </summary>
+    /// <remarks>
+    /// 演示了享元模式。
+    /// 其中相对少量的Character对象由可能具有许多字符的文档多次共享。
+    /// https://www.dofactory.com/net/flyweight-design-pattern#realworld
+    /// </remarks>
+    public class RealWorld
     {
         public class CharacterFactory
         {
-            private Dictionary<char, Character> _characters = new Dictionary<char, Character>();
+            private readonly Dictionary<char, Character> _characters = new Dictionary<char, Character>();
 
             public Character GetCharacter(char key)
             {
-                //Uses "lazy initialization"
                 Character character = null;
                 if (_characters.ContainsKey(key))
                 {
@@ -35,39 +36,33 @@ namespace Design_Pattern.Flyweight
             }
         }
 
-        /// <summary>
-        /// The 'Flyweight' abstract class
-        /// </summary>
         public abstract class Character
         {
-            protected char symbol;
-            protected int width;
-            protected int height;
-            protected int ascent;
-            protected int descent;
-            protected int pointSize;
+            protected char Symbol;
+            protected int Width;
+            protected int Height;
+            protected int Ascent;
+            protected int Descent;
+            protected int PointSize;
 
             public abstract void Display(int pointSize);
         }
 
-        /// <summary>
-        /// A 'ConcreteFlyweight' class
-        /// </summary>
         public class CharacterA : Character
         {
             public CharacterA()
             {
-                symbol = 'A';
-                height = 100;
-                width = 120;
-                ascent = 70;
-                descent = 0;
+                Symbol = 'A';
+                Height = 100;
+                Width = 120;
+                Ascent = 70;
+                Descent = 0;
             }
 
             public override void Display(int pointSize)
             {
-                this.pointSize = pointSize;
-                Console.WriteLine($"{symbol} (pointSize {pointSize})");
+                this.PointSize = pointSize;
+                Console.WriteLine($"{Symbol} (pointSize {pointSize})");
             }
         }
 
@@ -75,17 +70,17 @@ namespace Design_Pattern.Flyweight
         {
             public CharacterB()
             {
-                symbol = 'B';
-                height = 100;
-                width = 140;
-                ascent = 72;
-                descent = 0;
+                Symbol = 'B';
+                Height = 100;
+                Width = 140;
+                Ascent = 72;
+                Descent = 0;
             }
 
             public override void Display(int pointSize)
             {
-                this.pointSize = pointSize;
-                Console.WriteLine($"{symbol} (pointSize {pointSize})");
+                this.PointSize = pointSize;
+                Console.WriteLine($"{Symbol} (pointSize {pointSize})");
             }
         }
 
@@ -93,17 +88,17 @@ namespace Design_Pattern.Flyweight
         {
             public CharacterZ()
             {
-                symbol = 'Z';
-                height = 100;
-                width = 100;
-                ascent = 68;
-                descent = 0;
+                Symbol = 'Z';
+                Height = 100;
+                Width = 100;
+                Ascent = 68;
+                Descent = 0;
             }
 
             public override void Display(int pointSize)
             {
-                this.pointSize = pointSize;
-                Console.WriteLine($"{symbol} (pointSize {pointSize})");
+                this.PointSize = pointSize;
+                Console.WriteLine($"{Symbol} (pointSize {pointSize})");
             }
         }
     }

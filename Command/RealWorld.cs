@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design_Pattern.Command
+﻿namespace Design_Pattern.Command
 {
-    public  class RealWorld
+    /// <summary>
+    /// Command Design Pattern
+    /// </summary>
+    /// <remarks>
+    /// 演示了在一个简单的计算器中使用的命令模式，它具有无线数量的撤销和重做。
+    /// 请注意，在C#中,"运算符"一词是关键字。用`@`作为前缀允许将其用作标识符。
+    /// https://www.dofactory.com/net/command-design-pattern#realworld
+    /// </remarks>
+    public class RealWorld
     {
         public abstract class Command
         {

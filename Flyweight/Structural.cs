@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design_Pattern.Flyweight
+﻿namespace Design_Pattern.Flyweight
 {
-    public  class Structural
+    /// <summary>
+    /// Flyweight Design Pattern
+    /// </summary>
+    /// <remarks>
+    /// 演示了享元模式。
+    /// 其中相对少量的对象被不同的客户端多次共享。
+    /// https://www.dofactory.com/net/flyweight-design-pattern#structural
+    /// </remarks>
+    public class Structural
     {
-        /// <summary>
-        /// The 'FlyweightFactory' class
-        /// </summary>
         public class FlyweightFactory
         {
             private Dictionary<string, Flyweight> Flyweights { get; } = new Dictionary<string, Flyweight>();
@@ -28,17 +27,11 @@ namespace Design_Pattern.Flyweight
             }
         }
 
-        /// <summary>
-        /// The 'Flyweight' abstract class
-        /// </summary>
         public abstract class Flyweight
         {
             public abstract void Operation(int extrinsicstate);
         }
 
-        /// <summary>
-        /// The 'ConcreteFlyweight' class
-        /// </summary>
         public class ConcreteFlyweight : Flyweight
         {
             public override void Operation(int extrinsicstate)

@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design_Pattern.Iterator
+﻿namespace Design_Pattern.Iterator
 {
-    public  class Structural
+    /// <summary>
+    /// Iterator Design Pattern
+    /// </summary>
+    /// <remarks>
+    /// 演示了迭代器模式。
+    /// 该模式提供了一种遍历(迭代)项目集合的方法，而无需详细说明集合的底层结构。
+    /// https://www.dofactory.com/net/iterator-design-pattern#structural
+    /// </remarks>
+    public class Structural
     {
         public abstract class Aggregate
         {

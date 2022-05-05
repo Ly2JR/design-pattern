@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design_Pattern.TemplateMethod
+﻿namespace Design_Pattern.TemplateMethod
 {
-    public  class Structural
+    /// <summary>
+    /// Template Method Design Pattern
+    /// </summary>
+    /// <remarks>
+    /// 演示了模板方法。
+    /// 它提供了方法的骨架调用序列。一个或多个步骤可以推迟到实现这些步骤的子类，而不改变整个调用顺序。
+    /// https://www.dofactory.com/net/template-method-design-pattern#structural
+    /// </remarks>
+    public class Structural
     {
         public abstract class AbstractClass
         {

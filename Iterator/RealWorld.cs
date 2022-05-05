@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design_Pattern.Iterator
+﻿namespace Design_Pattern.Iterator
 {
-    public  class RealWorld
+    /// <summary>
+    /// Iterator Design Pattern
+    /// </summary>
+    /// <remarks>
+    /// 演示了迭代器模式。
+    /// 该模式用于迭代项目集合并在每次迭代时跳过特定数量的项目
+    /// https://www.dofactory.com/net/iterator-design-pattern#realworld
+    /// </remarks>
+    public class RealWorld
     {
         public class Item
         {

@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design_Pattern.Command
+﻿namespace Design_Pattern.Command
 {
-    public  class Structural
+    /// <summary>
+    /// Command Design Pattern
+    /// </summary>
+    /// <remarks>
+    /// 演示了命令模式。
+    /// 该模式将请求存储为允许客户端执行或回放请求的对象。
+    /// https://www.dofactory.com/net/command-design-pattern#structural
+    /// </remarks>
+    public class Structural
     {
         public abstract class Command
         {

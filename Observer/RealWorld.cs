@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Design_Pattern.Observer
+﻿namespace Design_Pattern.Observer
 {
-    public  class RealWorld
+    /// <summary>
+    /// Observer Design Pattern
+    /// </summary>
+    /// <remarks>
+    /// 演示了观察者模式。
+    /// 在该模式中，每次股票价值发生变化时都回通知注册投资者。
+    /// https://www.dofactory.com/net/observer-design-pattern#realworld
+    /// </remarks>
+    public class RealWorld
     {
         public abstract class Stock
         {
-            private string _symbol;
             private double _price;
-            private List<IInvestor> _investors = new List<IInvestor>();
+            private readonly List<IInvestor> _investors = new List<IInvestor>();
 
-            public Stock(string symbol, double price)
+            protected Stock(string symbol, double price)
             {
-                _symbol = symbol;
+                Symbol = symbol;
                 _price = price;
             }
 
@@ -53,7 +54,7 @@ namespace Design_Pattern.Observer
                 }
             }
 
-            public string Symbol => _symbol;
+            public string Symbol { get; }
         }
 
         public class IBM : Stock
@@ -71,8 +72,7 @@ namespace Design_Pattern.Observer
 
         public class Investor : IInvestor
         {
-            private string _name;
-            private Stock _stock;
+            private readonly string _name;
 
             public Investor(string name)
             {
@@ -84,11 +84,7 @@ namespace Design_Pattern.Observer
                 Console.WriteLine($"Notified {_name } of {stock.Symbol}'s change  to {stock.Price:C}");
             }
 
-            public Stock Stock
-            {
-                get => _stock;
-                set => _stock = value;
-            }
+            public Stock Stock { get; set; }
         }
     }
 }
