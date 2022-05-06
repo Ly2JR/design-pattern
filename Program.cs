@@ -1,6 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices.ComTypes;
 using Singleton= Design_Pattern.Singleton;
@@ -24,26 +23,28 @@ using Mediator= Design_Pattern.Mediator;
 using Chain=Design_Pattern.Chain;
 using Memento=Design_Pattern.Memento;
 using Strategy=Design_Pattern.Strategy;
+using Visitor=Design_Pattern.Visitor;
+using State=Design_Pattern.State;
 
 
 #region 1. 单件模式
 
-//Console.WriteLine("Singleton:Structural code");
+//Console.WriteLine("Singleton:Structural code ------ ");
 
 //var s1 = Singleton.Structural.Singleton.Instance();
 //var s2 = Singleton.Structural.Singleton.Instance();
 ////Test for same instance
-//if (s1==s2)
+//if (s1 == s2)
 //{
 //    Console.WriteLine("Objects are the same instance");
 //}
 
-//Console.WriteLine("\r\nSingleton:RealWorld code");
+//Console.WriteLine("\r\nSingleton:RealWorld code  ------ ");
 
 //var b1 = Singleton.RealWorld.LoadBalancer.GetLoadBalancer();
 //var b2 = Singleton.RealWorld.LoadBalancer.GetLoadBalancer();
-//var b3= Singleton.RealWorld.LoadBalancer.GetLoadBalancer();
-//var b4= Singleton.RealWorld.LoadBalancer.GetLoadBalancer();
+//var b3 = Singleton.RealWorld.LoadBalancer.GetLoadBalancer();
+//var b4 = Singleton.RealWorld.LoadBalancer.GetLoadBalancer();
 
 ////Same instance?
 //if (b1 == b2 && b2 == b3 && b3 == b4)
@@ -52,7 +53,6 @@ using Strategy=Design_Pattern.Strategy;
 //}
 
 ////Load balance 15 server requests
-
 //var balancer = Singleton.RealWorld.LoadBalancer.GetLoadBalancer();
 //for (var i = 0; i < 15; i++)
 //{
@@ -64,7 +64,7 @@ using Strategy=Design_Pattern.Strategy;
 
 #region 2. 抽象工厂
 
-//Console.WriteLine("AbstractFactory:Structural code");
+//Console.WriteLine("AbstractFactory:Structural code ------ ");
 
 ////Abstract factory #1
 //var factory1 = new AbstractFactory.Structural.ConcreteFactory1();
@@ -76,7 +76,7 @@ using Strategy=Design_Pattern.Strategy;
 //var client2 = new AbstractFactory.Structural.Client(factory2);
 //client2.Run();
 
-//Console.WriteLine("\r\nAbstractFactory:RealWorld code");
+//Console.WriteLine("\r\nAbstractFactory:RealWorld code ------ ");
 
 //var africa = new AbstractFactory.RealWorld.AfricaFactory();
 //var world = new AbstractFactory.RealWorld.AnimalWorld(africa);
@@ -90,7 +90,7 @@ using Strategy=Design_Pattern.Strategy;
 
 #region 3. 建造者模式
 
-//Console.WriteLine("Builder:Structural code");
+//Console.WriteLine("Builder:Structural code ------ ");
 
 //var director = new Builder.Structural.Director();
 
@@ -105,7 +105,7 @@ using Strategy=Design_Pattern.Strategy;
 //var p2 = b2.GetResult();
 //p2.Show();
 
-//Console.WriteLine("Builder:RealWorld code");
+//Console.WriteLine("Builder:RealWorld code ------ ");
 
 //Builder.RealWorld.VehicleBuilder builder;
 
@@ -126,7 +126,7 @@ using Strategy=Design_Pattern.Strategy;
 
 #region 4. 工厂方法模式
 
-//Console.WriteLine("Factory Method:Structural code");
+//Console.WriteLine("Factory Method:Structural code ------ ");
 
 //var creators = new FactoryMethod.Structural.Creator[2];
 //creators[0] = new FactoryMethod.Structural.ConcreteCreatorA();
@@ -137,7 +137,7 @@ using Strategy=Design_Pattern.Strategy;
 //    Console.WriteLine($"Created {product.GetType().Name}");
 //}
 
-//Console.WriteLine("\r\nFactory Method:RealWorld code");
+//Console.WriteLine("\r\nFactory Method:RealWorld code ------ ");
 
 //var documents = new FactoryMethod.RealWorld.Document[2];
 //documents[0] = new FactoryMethod.RealWorld.Resume();
@@ -156,18 +156,18 @@ using Strategy=Design_Pattern.Strategy;
 
 #region 5. 原型模式
 
-//Console.WriteLine("Prototype:Structural code");
+//Console.WriteLine("Prototype:Structural code ------ ");
 
 //var p1 = new Prototype.Structural.ConcretePrototype1("I");
 //var c1 = (Prototype.Structural.ConcretePrototype1)p1.Clone();
 //Console.WriteLine($"Cloned:{c1.Id}");
 
-//var p2=new Prototype.Structural.ConcretePrototype2("II");
+//var p2 = new Prototype.Structural.ConcretePrototype2("II");
 //var c2 = (Prototype.Structural.ConcretePrototype2)p2.Clone();
 //Console.WriteLine($"Cloned:{c2.Id}");
 
 
-//Console.WriteLine("\r\nPrototype:RealWorld code");
+//Console.WriteLine("\r\nPrototype:RealWorld code ------ ");
 
 //var colorManager = new Prototype.RealWorld.ColorManager
 //{
@@ -177,26 +177,26 @@ using Strategy=Design_Pattern.Strategy;
 //};
 
 ////User adds personalized colors
-//colorManager["angry"]=new Prototype.RealWorld.Color(255, 54, 0);
+//colorManager["angry"] = new Prototype.RealWorld.Color(255, 54, 0);
 //colorManager["peace"] = new Prototype.RealWorld.Color(128, 211, 128);
 //colorManager["flame"] = new Prototype.RealWorld.Color(211, 34, 20);
 
 ////User clones selected colors
 //var color1 = colorManager["red"].Clone() as Prototype.RealWorld.Color;
 //var color2 = colorManager["peace"].Clone() as Prototype.RealWorld.Color;
-//var color3= colorManager["flame"].Clone() as Prototype.RealWorld.Color;
+//var color3 = colorManager["flame"].Clone() as Prototype.RealWorld.Color;
 
 #endregion
 
 #region 6. 适配器模式
 
-//Console.WriteLine("Adapter:Structural code");
+//Console.WriteLine("Adapter:Structural code ------ ");
 
 //var target = new Adapter.Structural.Adapter();
 //target.Request();
 
 
-//Console.WriteLine("\r\nAdapter:RealWorld code");
+//Console.WriteLine("\r\nAdapter:RealWorld code ------ ");
 
 //var unknown = new Adapter.RealWorld.Compound();
 //unknown.Display();
@@ -214,7 +214,7 @@ using Strategy=Design_Pattern.Strategy;
 
 #region 7. 桥接模式
 
-//Console.WriteLine("Bridge:Structural code");
+//Console.WriteLine("Bridge:Structural code ------ ");
 
 //var ab = new Bridge.Structural.RefinedAbstraction
 //{
@@ -225,7 +225,7 @@ using Strategy=Design_Pattern.Strategy;
 //ab.Implementor = new Bridge.Structural.ConcreteImplementorB();
 //ab.Operation();
 
-//Console.WriteLine("\r\nRealWorld code");
+//Console.WriteLine("\r\nBridge:RealWorld code ------ ");
 
 //var customers = new Bridge.RealWorld.Customers
 //{
@@ -254,7 +254,7 @@ using Strategy=Design_Pattern.Strategy;
 
 //d2.Operation();
 
-//Console.WriteLine("\r\nRealWorld code ------- ");
+//Console.WriteLine("\r\nDecorator:RealWorld code ------- ");
 
 //var book = new Decorator.RealWorld.Book("Worley", "Inside ASP.NET", 10);
 //book.Display();
@@ -416,7 +416,6 @@ using Strategy=Design_Pattern.Strategy;
 //    item = iterator.Next();
 //}
 
-
 //Console.WriteLine("\r\nIterator:RealWorld code ------ ");
 
 //var collection = new Iterator.RealWorld.Collection
@@ -474,7 +473,7 @@ using Strategy=Design_Pattern.Strategy;
 
 #region 16. 解释器模式
 
-//Console.WriteLine("Interpreter:Structural code");
+//Console.WriteLine("Interpreter:Structural code ------ ");
 
 //var structuralContext = new Interpreter.Structural.Context();
 //var list = new List<Interpreter.Structural.AbstractExpression>
@@ -490,7 +489,7 @@ using Strategy=Design_Pattern.Strategy;
 //    expression.Interpret(structuralContext);
 //}
 
-//Console.WriteLine("\r\nInterpreter:RealWorld code");
+//Console.WriteLine("\r\nInterpreter:RealWorld code ------ ");
 
 //var roman = "MCMXXVIII";
 //var realWorldContext = new Interpreter.RealWorld.Context(roman);
@@ -551,7 +550,7 @@ using Strategy=Design_Pattern.Strategy;
 
 #region 18. 责任链模式
 
-//Console.WriteLine("Chain:Structural code");
+//Console.WriteLine("Chain:Structural code ------ ");
 
 //var h1 = new Chain.Structural.ConcreteHandler1();
 //var h2 = new Chain.Structural.ConcreteHandler2();
@@ -565,7 +564,7 @@ using Strategy=Design_Pattern.Strategy;
 //    h1.HandleRequest(request);
 //}
 
-//Console.WriteLine("\r\nChain:RealWorld code");
+//Console.WriteLine("\r\nChain:RealWorld code ------ ");
 
 //var larry = new Chain.RealWorld.Director();
 //var sam = new Chain.RealWorld.Director.VicePresident();
@@ -665,50 +664,89 @@ using Strategy=Design_Pattern.Strategy;
 
 #region 21. 策略模式
 
-Console.WriteLine("Strategy:Structural code");
+//Console.WriteLine("Strategy:Structural code ------ ");
 
-Strategy.Structural.Context context;
+//Strategy.Structural.Context context;
 
-context = new Strategy.Structural.Context(new Strategy.Structural.ConcreteStrategyA());
-context.ContextInterface();
+//context = new Strategy.Structural.Context(new Strategy.Structural.ConcreteStrategyA());
+//context.ContextInterface();
 
-context = new Strategy.Structural.Context(new Strategy.Structural.ConcreteStrategyB());
-context.ContextInterface();
+//context = new Strategy.Structural.Context(new Strategy.Structural.ConcreteStrategyB());
+//context.ContextInterface();
 
-context = new Strategy.Structural.Context(new Strategy.Structural.ConcreteStrategyC());
-context.ContextInterface();
+//context = new Strategy.Structural.Context(new Strategy.Structural.ConcreteStrategyC());
+//context.ContextInterface();
 
-Console.WriteLine("\r\nStrategy:RealWorld code");
+//Console.WriteLine("\r\nStrategy:RealWorld code ------ ");
 
-var studentRecords = new Strategy.RealWorld.SortedList();
-studentRecords.Add("Samual");
-studentRecords.Add("Jimmy");
-studentRecords.Add("Sandra");
-studentRecords.Add("Vivek");
-studentRecords.Add("Anna");
+//var studentRecords = new Strategy.RealWorld.SortedList();
+//studentRecords.Add("Samual");
+//studentRecords.Add("Jimmy");
+//studentRecords.Add("Sandra");
+//studentRecords.Add("Vivek");
+//studentRecords.Add("Anna");
 
-studentRecords.SetSortStrategy(new Strategy.RealWorld.QuickSort());
-studentRecords.Sort();
+//studentRecords.SetSortStrategy(new Strategy.RealWorld.QuickSort());
+//studentRecords.Sort();
 
-studentRecords.SetSortStrategy(new Strategy.RealWorld.ShellSort());
-studentRecords.Sort();
+//studentRecords.SetSortStrategy(new Strategy.RealWorld.ShellSort());
+//studentRecords.Sort();
 
-studentRecords.SetSortStrategy(new Strategy.RealWorld.MergeSort());
-studentRecords.Sort();
-
-#endregion
-
-#region 22. 策略模式
-
+//studentRecords.SetSortStrategy(new Strategy.RealWorld.MergeSort());
+//studentRecords.Sort();
 
 #endregion
 
-#region 23. 策略模式
+#region 22. 访问者模式
 
+//Console.WriteLine("Visitor:Structural code ------ ");
+
+//var o = new Visitor.Structural.ObjectStructure();
+//o.Attach(new Visitor.Structural.ConcreteElementA());
+//o.Attach(new Visitor.Structural.ConcreteElementB());
+
+//var v1 = new Visitor.Structural.ConcreteVisitor1();
+//var v2 = new Visitor.Structural.ConcreteVisitor2();
+
+//o.Accept(v1);
+//o.Accept(v2);
+
+//Console.WriteLine("\r\nVisitor:RealWorld code ------ ");
+
+//var employee = new Visitor.RealWorld.Employees();
+//employee.Attach(new Visitor.RealWorld.Clerk());
+//employee.Attach(new Visitor.RealWorld.Director());
+//employee.Attach(new Visitor.RealWorld.President());
+
+//employee.Accept(new Visitor.RealWorld.IncomeVisitor());
+//employee.Accept(new Visitor.RealWorld.VacationVisitor());
 
 #endregion
 
+#region 23. 状态模式
 
+//Console.WriteLine("State:Structural code ------ ");
+
+//var context = new State.Structural.Context(new State.Structural.ConcreteStateA());
+
+//context.Request();
+//context.Request();
+//context.Request();
+//context.Request();
+//context.Request();
+
+//Console.WriteLine("\r\nState:RealWorld code ------ ");
+
+//var account = new State.RealWorld.Account("Jim Johnson");
+
+//account.Deposit(500.0);
+//account.Deposit(300.0);
+//account.Deposit(550.0);
+//account.PayInterest();
+//account.Withdraw(2000.00);
+//account.Withdraw(1100.00);
+
+#endregion
 
 Console.WriteLine("按任意键结束...");
 Console.ReadKey();
